@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificado de Garantia - Cases Store</title>
+    <style>
+        :root {
+            --verde-tech: #2ecc71;
+            --preto-fosco: #1a1a1a;
+            --cinza-claro: #f4f7f6;
+            --branco: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--cinza-claro);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: auto;
+            background: var(--branco);
+            padding: 15mm;
+            border-top: 10px solid var(--verde-tech);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--preto-fosco);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Estilo para Upload da Logo */
+        #logo-container {
+            width: 80px;
+            height: 80px;
+            border: 2px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        #logo-preview {
+            max-width: 100%;
+            max-height: 100%;
+            display: none;
+        }
+
+        .store-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--preto-fosco);
+            text-transform: uppercase;
+        }
+
+        .store-title span { color: var(--verde-tech); }
+
+        .info-topo {
+            text-align: right;
+            font-size: 11px;
+            color: #555;
+        }
+
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 20px;
+            letter-spacing: 3px;
+            margin: 20px 0;
+            color: var(--preto-fosco);
+        }
+
+        .grid-dados {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .campo-box {
+            border: 1px solid #e0e0e0;
+            padding: 8px;
+            background: #fafafa;
+        }
+
+        .campo-box label {
+            display: block;
+            font-size: 9px;
+            font-weight: bold;
+            color: var(--verde-tech);
+            text-transform: uppercase;
+        }
+
+        .campo-box input, .campo-box select {
+            width: 100%;
+            border: none;
+            background: transparent;
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            outline: none;
+        }
+
+        .cobertura-dinamica h3 {
+            background: var(--preto-fosco);
+            color: var(--verde-tech);
+            padding: 5px 10px;
+            font-size: 14px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .texto-garantia-editavel {
+            width: 100%;
+            min-height: 150px;
+            border: 1px dashed #ccc;
+            padding: 10px;
+            font-size: 12px;
+            line-height: 1.5;
+            color: #333;
+            outline: none;
+            white-space: pre-wrap;
+        }
+
+        .checklist-tech {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            background: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #eee;
+            margin-bottom: 25px;
+        }
+
+        .check-item {
+            font-size: 11px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .assinaturas-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 50px;
+        }
+
+        .assinatura-box {
+            flex: 1;
+            text-align: center;
+        }
+
+        .assinatura-box .linha {
+            border-top: 1px solid var(--preto-fosco);
+            margin-bottom: 5px;
+        }
+
+        .aceite-texto { font-size: 12px; margin-bottom: 30px; }
+
+        .input-inline {
+            border: none;
+            border-bottom: 1px solid #000;
+            outline: none;
+            font-family: inherit;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .page { box-shadow: none; border-top: 5px solid var(--verde-tech); margin: 0; width: 100%; }
+            .no-print, #logo-upload { display: none; }
+            .texto-garantia-editavel { border: none; }
+            #logo-container { border: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <header>
+            <div class="logo-area">
+                <input type="file" id="logo-upload" accept="image/*" style="display:none">
+                <div id="logo-container" onclick="document.getElementById('logo-upload').click()">
+                    <span id="placeholder-text" style="font-size: 10px; text-align: center;">ADD LOGO PNG</span>
+                    <img id="logo-preview" src="" alt="Logo">
+                </div>
+                <div class="store-title">CASES<span>STORE</span></div>
+            </div>
+            <div class="info-topo">
+                Av. Eduardo Ribeiro, 651 - Centro, Manacapuru/AM<br>
+                <strong>WhatsApp: (92) 98431-8705</strong>
+            </div>
+        </header>
+
+        <h1>Certificado de Garantia</h1>
+
+        <div class="grid-dados">
+            <div class="campo-box">
+                <label>Modelo do Dispositivo</label>
+                <input type="text" id="modelo" class="save-data" placeholder="Ex: iPhone 13">
+            </div>
+            <div class="campo-box">
+                <label>IMEI / Serial</label>
+                <input type="text" id="imei" class="save-data" placeholder="Digite o IMEI">
+            </div>
+            <div class="campo-box">
+                <label>WhatsApp Cliente</label>
+                <input type="text" id="whatsapp" class="save-data" placeholder="(92) 00000-0000">
+            </div>
+            <div class="campo-box">
+                <label>Tempo de Garantia</label>
+                <select id="tempo-garantia" class="save-data">
+                    <option value="3">3 MESES</option>
+                    <option value="6" selected>6 MESES</option>
+                    <option value="12">1 ANO</option>
+                </select>
+            </div>
+            <div class="campo-box">
+                <label>Data de Compra (Saída)</label>
+                <input type="text" id="data-saida" readonly>
+            </div>
+            <div class="campo-box">
+                <label>Vencimento da Garantia</label>
+                <input type="text" id="data-vencimento" readonly style="color: #e74c3c;">
+            </div>
+        </div>
+
+        <div class="cobertura-dinamica">
+            <h3>Cobertura e Condições Gerais</h3>
+            <div id="termos-texto" class="texto-garantia-editavel save-content" contenteditable="true">
+Esta garantia cobre exclusivamente defeitos de fabricação de componentes internos. 
+
+A garantia NÃO será aplicada em casos de:
+1. Contato com líquidos ou umidade (Oxidação).
+2. Danos físicos como tela quebrada, trincada ou riscos profundos.
+3. Selo de garantia interno rompido ou violado.
+4. Aparelho com sinais de queda ou esmagamento.
+5. Tentativa de reparo por terceiros ou assistência não autorizada.
+6. Problemas de software causados pelo usuário.</div>
+        </div>
+
+        <div class="bloco-final">
+            <div class="checklist-tech">
+                <div class="check-item"><input type="checkbox" checked> BATERIA</div>
+                <div class="check-item"><input type="checkbox" checked> TELA/TOUCH</div>
+                <div class="check-item"><input type="checkbox" checked> CARGA</div>
+                <div class="check-item"><input type="checkbox" checked> CÂMERAS</div>
+                <div class="check-item"><input type="checkbox" checked> AUDIO/SOM</div>
+                <div class="check-item"><input type="checkbox" checked> FACE ID/BIOMETRIA</div>
+                <div class="check-item"><input type="checkbox" checked> SINAL/WI-FI</div>
+                <div class="check-item"><input type="checkbox" checked> BOTÕES</div>
+                <div class="check-item"><input type="checkbox" checked> SENSORES</div>
+            </div>
+
+            <div class="aceite-texto">
+                Eu, <input type="text" id="nome-cliente" class="input-inline save-data" placeholder="NOME COMPLETO DO CLIENTE" style="width: 350px;">, 
+                declaro que li os termos e recebi o aparelho testado.
+            </div>
+
+            <div class="assinaturas-container">
+                <div class="assinatura-box">
+                    <div class="linha"></div>
+                    <p>Assinatura do Cliente</p>
+                </div>
+                <div class="assinatura-box">
+                    <div class="linha"></div>
+                    <input type="text" class="save-data" id="vendedor" style="width: 150px; text-align: center; border: none; font-weight: bold;" value="Responsável Store">
+                    <p>Cases Store</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="no-print" style="margin-top: 30px; text-align: center; color: #888;">
+            <b>CTRL + P</b> para imprimir. As alterações são salvas automaticamente.
+        </div>
+    </div>
+
+    <script>
+        // Função para formatar data DD/MM/AAAA
+        function formatarData(data) {
+            return data.toLocaleDateString('pt-BR');
+        }
+
+        // Cálculo automático de datas
+        function calcularGarantia() {
+            const hoje = new Date();
+            const meses = parseInt(document.getElementById('tempo-garantia').value);
+            
+            document.getElementById('data-saida').value = formatarData(hoje);
+            
+            const vencimento = new Date();
+            vencimento.setMonth(hoje.getMonth() + meses);
+            document.getElementById('data-vencimento').value = formatarData(vencimento);
+        }
+
+        // Salvar e carregar dados automaticamente (LocalStorage)
+        function persistirDados() {
+            // Salva inputs
+            document.querySelectorAll('.save-data').forEach(el => {
+                el.addEventListener('input', () => localStorage.setItem(el.id, el.value));
+                if(localStorage.getItem(el.id)) el.value = localStorage.getItem(el.id);
+            });
+
+            // Salva textos editáveis
+            const termos = document.getElementById('termos-texto');
+            termos.addEventListener('input', () => localStorage.setItem('termos-editados', termos.innerHTML));
+            if(localStorage.getItem('termos-editados')) termos.innerHTML = localStorage.getItem('termos-editados');
+            
+            // Salva Logo
+            if(localStorage.getItem('logo-img')) {
+                document.getElementById('logo-preview').src = localStorage.getItem('logo-img');
+                document.getElementById('logo-preview').style.display = 'block';
+                document.getElementById('placeholder-text').style.display = 'none';
+            }
+        }
+
+        // Lógica da Logo
+        document.getElementById('logo-upload').addEventListener('change', function() {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('logo-preview').src = e.target.result;
+                document.getElementById('logo-preview').style.display = 'block';
+                document.getElementById('placeholder-text').style.display = 'none';
+                localStorage.setItem('logo-img', e.target.result);
+            }
+            reader.readAsDataURL(this.files[0]);
+        });
+
+        // Inicialização
+        document.getElementById('tempo-garantia').addEventListener('change', calcularGarantia);
+        window.onload = () => {
+            calcularGarantia();
+            persistirDados();
+        };
+    </script>
+</body>
+</html>
